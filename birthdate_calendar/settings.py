@@ -48,7 +48,7 @@ DJANGO_APPS = [
 ]
 
 BIRTHDAY_CALENDAR_APPS = [
-    'base.apps.BaseConfig',
+    'base',
 ]
 
 THIRD_PARTY_APPS = []
