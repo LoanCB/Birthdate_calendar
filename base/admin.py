@@ -1,6 +1,9 @@
 from django.contrib import admin
 
-from base.models import Person
+from base.models import Person, CustomUser
+
+
+admin.site.register(CustomUser)
 
 
 @admin.register(Person)
