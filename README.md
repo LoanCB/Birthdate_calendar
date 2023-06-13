@@ -15,7 +15,7 @@ Django est présent.
 Tout d'abord, vous devez récupérer le projet en local. Si vous avez accès au github, vous pouvez le cloner en https avec 
 la commande suivante :
 ```bash
-git clone https://github.com/Patais/Abraxan.git
+git clone https://github.com/Patais/Birthdate_calendar.git
 ```
 Vous pouvez également le télécharger et l'installer manuellement.
 
