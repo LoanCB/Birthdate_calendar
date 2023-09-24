@@ -6,6 +6,14 @@
     {% include 'includes/environment_info.html' with css_selector='body' %}
 {% endblock %}
 
+{% block extrahead %}
+    <style>
+    #container {
+        height: calc(100% - 25px);
+    }
+    </style>
+{% endblock %}
+
 {% block branding %}
 <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
 {% if user.is_anonymous %}
