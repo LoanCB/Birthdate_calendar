@@ -11,13 +11,15 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         today = datetime.date.today().strftime('%d-%m')
+        today_year = datetime.datetime.today().year
         total = 0
         for person in Person.objects.all():
             if person.birthdate.strftime('%d-%m') == today:
                 try:
                     request = requests.post(
                         f"https://ntfy.sh/{person.user.notification_tag}",
-                        data=f"Aujourd'hui est l'anniversaire de {person.get_full_name()} !",
+                        data=f"Aujourd'hui est l'anniversaire de {person.username or person.get_full_name()} !\n Cela "
+                             f"lui fait {today_year - person.birthdate.year} ans",
                         headers={
                             "Title": f"Anniversaire {person.get_full_name()}",
                             "Tags": "tada"
