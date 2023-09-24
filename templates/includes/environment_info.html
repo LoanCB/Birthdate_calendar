@@ -1,0 +1,14 @@
+{% load base_tags %}
+
+<style>
+    {{ css_selector|default:'div.scroll-view' }}:before {
+        display: block;
+        line-height: 25px;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+        content: "{% settings_value "ENVIRONMENT_NAME" %}";
+        background-color: {% settings_value "ENVIRONMENT_COLOR" %};
+    }
+</style>

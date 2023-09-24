@@ -2,6 +2,9 @@ from .base import *
 
 DEBUG = False
 
+ENVIRONMENT_NAME = 'Production'
+ENVIRONMENT_COLOR = '#b21c17'
+
 ALLOWED_HOSTS = ['loan-cb.fr', 'birthdates.loan-cb.fr']
 
 CORS_ALLOWED_ORIGINS = [
