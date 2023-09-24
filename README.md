@@ -7,8 +7,8 @@ un lien pour la [documentation](https://docs.ntfy.sh/) et le [code open source](
 Le calendrier d'anniversaire a un nom assez explicite. Son but est de simplement envoyer une notification pour ne pas
 oublier ces derniers le jour venu !
 
-Attention, il n'est actuellement pas prévu  que je fasse une interface utilisateur. Seul le module d'administration de
-Django est présent.
+Attention, il n'est actuellement pas prévu une implémentation d'une interface utilisateur. Seul le module
+d'administration de Django est présent.
 
 ## Installation
 ### Récupération du projet
@@ -51,25 +51,17 @@ cette dernière, un fichier requirements a été mis en place répertoriant l'en
 pip install -r requirements.txt
 ```
 
-### Clef secret & mot de passe
-Pour des questions de sécurité, la clef secrète du serveur de django ainsi que le mot de passe de la base de données
-sont stockées dans le fichier .env qui est propre à chaque machine. Vous devez donc créer ce fichier dans la racine du
-projet et le renseigner de cette manière avec vos données : 
-![img.png](static/img.png)
+### Variables d'environnement
+Pour des questions de sécurité, certaines données sont stockées dans le fichier .env qui est propre à chaque machine.
+Vous pouvez dupliquer le fichier .env.sample et le renommer .env, ainsi que de compléter les informations manquantes.
 <br>
 <u>PS:</u> Pour la base de données, tout est expliqué juste en dessous.
 
 ### Base de données
 #### Mise en place
-Le projet fonctionne sur une base de données Postgres SQL. Pour la faire fonctionner, il vous faudra l'installer en local:
-https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
-<br>
-Attention à bien garder le mot de passe que vous choisissez lors de l'installation de postgres !
-
-Une fois l'installation effectuée, lancer pgAdmin et connectez vous.
-Ensuite, faites un clique droit sur base de données -> créer -> base de donnée puis créez une base se nomant 
-"birthdate_calendar_dev".
-Pour finir, vous devez renseigner le mot de passe dans le fichier .env créé juste avant.
+Le projet fonctionne sur une base de données MySQL. Il vous faudra créer une base de données pour le projet; je vous
+recommande de l'appeler "birthdate_calendar_dev". Une fois cela fait, il ne manquera plus qu'à renseigner, le nom de
+votre base données, l'utilisateur et le mot de passe de connexion dans le fichier .env.
 
 #### Migrations
 Une fois la base de données en place, il va falloir la migrer. Pour cela Django met en place une commande dans 
