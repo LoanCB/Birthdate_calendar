@@ -8,7 +8,8 @@ admin.site.register(CustomUser)
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'birthdate', 'get_teams')
-    list_filter = ('first_name', 'last_name', 'username')
+    search_fields = ('first_name', 'last_name', 'username')
+    search_help_text = 'Vous pouvez rechercher sur le prénom, nom et le surnom'
 
     @admin.display(description='équipes')
     def get_teams(self, obj):

@@ -27,13 +27,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 VERSION = '1.2'
 
-ALLOWED_HOSTS = ['loan-cb.fr', 'birthdates.loan-cb.fr']
-
-CORS_ALLOWED_ORIGINS = [
-    'https://loan-cb.fr',
-    'https://birthdates.loan-cb.fr',
-]
-
 
 # Application definition
 
