@@ -243,5 +243,5 @@ cython_debug/
 
 # Prod
 passenger_wsgi.py
-static
+./static
 tmp
