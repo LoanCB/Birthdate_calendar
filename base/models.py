@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
 from django.utils.crypto import get_random_string
 
@@ -43,3 +43,16 @@ class Person(models.Model):
 
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'
+
+
+class Team(models.Model):
+    name = models.CharField('Nom', max_length=50)
+    users = models.ManyToManyField(CustomUser, verbose_name='utilisateurs', related_name='teams')
+    persons = models.ManyToManyField(Person, verbose_name='personnes', related_name='teams')
+
+    class Meta:
+        verbose_name = 'Equipe'
+        verbose_name_plural = 'Equipes'
+
+    def __str__(self):
+        return self.name
