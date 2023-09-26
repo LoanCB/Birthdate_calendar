@@ -1,5 +1,7 @@
 {% extends "admin/base.html" %}
 
+{% load static %}
+
 {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
 {% block extrastyle %}
@@ -7,6 +9,7 @@
 {% endblock %}
 
 {% block extrahead %}
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'base/favicon.png' %}">
     <style>
     #container {
         height: calc(100% - 25px);
