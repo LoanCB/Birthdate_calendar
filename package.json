@@ -1,0 +1,16 @@
+{
+  "name": "birthdate_calendar",
+  "version": "1.0.0",
+  "description": "Petit projet réalisé pour tester une solution open source d'envoi de notification à un téléphone nommé NTFY. Je laisse\r un lien pour la [documentation](https://docs.ntfy.sh/) et le [code open source](https://github.com/binwiederhier/ntfy).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind:watch": "npx tailwindcss -i ./base/static/base/css/input.css -o ./base/static/base/css/output.css --watch"
+  },
+  "author": "loan Courchinoux-Billonnet",
+  "license": "MIT",
+  "dependencies": {
+    "postcss": "^8.4.30",
+    "tailwindcss": "^3.3.3"
+  }
+}
