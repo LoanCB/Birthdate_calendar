@@ -21,7 +21,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    messages.success(request, "Vous avez bien été déconnecté")  # TODO show messages on base_site.html
+    messages.success(request, "Vous avez bien été déconnecté")
     return redirect(login_user)
 
 

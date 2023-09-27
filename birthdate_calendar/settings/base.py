@@ -44,7 +44,8 @@ BIRTHDAY_CALENDAR_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'corsheaders'
+    'corsheaders',
+    'fontawesomefree'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + BIRTHDAY_CALENDAR_APPS + THIRD_PARTY_APPS

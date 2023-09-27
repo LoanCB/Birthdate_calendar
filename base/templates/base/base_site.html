@@ -17,11 +17,18 @@
 
     <!-- CSS libraries -->
     <link href="{% static 'base/css/output.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
     {% block custom_css %}{% endblock %}
 </head>
 <body>
+
+<!-- Notification -->
+{% for message in messages %}
+    {% include 'base/components/message.html' with tags=message.tags message=message %}
+{% endfor %}
+<section id="messages-section"></section>
 
 {% block content %}{% endblock %}
 
