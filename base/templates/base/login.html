@@ -1,12 +1,21 @@
 {% extends 'base/base_site.html' %}
 
+{% load static %}
+
 {% block title %}Connexion{% endblock %}
 
 {% block content %}
-    <form method="POST" novalidate>
-        {% csrf_token %}
-        <h2>Login</h2>
-        {{ form.as_p }}
-        <button type="submit">Connexion</button>
-    </form>
+    <main class="w-[100vw] h-[100vh] flex justify-center items-center">
+        <section class="flex-1">
+            <img src="{% static 'base/images/secure_login.svg' %}" alt="illustration d'un ordinateur" class="max-w-[400px] mx-auto">
+        </section>
+        <section class="flex-1">
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                <h2>Login</h2>
+                {{ form.as_p }}
+                <button type="submit">Connexion</button>
+            </form>
+        </section>
+    </main>
 {% endblock %}
