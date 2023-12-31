@@ -25,14 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-VERSION = '1.2'
-
-ALLOWED_HOSTS = ['loan-cb.fr', 'birthdates.loan-cb.fr']
-
-CORS_ALLOWED_ORIGINS = [
-    'https://loan-cb.fr',
-    'https://birthdates.loan-cb.fr',
-]
+VERSION = '1.3'
 
 
 # Application definition
@@ -51,7 +44,8 @@ BIRTHDAY_CALENDAR_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'corsheaders'
+    'corsheaders',
+    'fontawesomefree'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + BIRTHDAY_CALENDAR_APPS + THIRD_PARTY_APPS
@@ -142,6 +136,10 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+STATICFILES_DIRS = (
+    ('node_modules', os.path.join(BASE_DIR, 'node_modules/')),
+)
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -149,3 +147,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Login
+LOGIN_URL = "login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "login/"

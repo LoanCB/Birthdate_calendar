@@ -1,0 +1,30 @@
+{% extends 'base/base_site.html' %}
+
+{% load static %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+    <main class="w-[100vw] h-[100vh] flex justify-center items-center">
+        <section class="flex-1">
+            <img src="{% static 'base/images/secure_login.svg' %}" alt="illustration d'un ordinateur" class="max-w-[400px] mx-auto">
+        </section>
+        <section class="flex-1">
+            <article class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+                <form class="space-y-6" method="post">
+                    {% csrf_token %}
+                    <h5 class="text-xl text-center font-medium text-gray-900">Connexion</h5>
+                    <div>
+                        {{ form.username.label }}
+                        {{ form.username }}
+                    </div>
+                    <div>
+                        {{ form.password.label }}
+                        {{ form.password }}
+                    </div>
+                    <button type="submit" class="w-full text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Se connecter</button>
+                </form>
+            </article>
+        </section>
+    </main>
+{% endblock %}

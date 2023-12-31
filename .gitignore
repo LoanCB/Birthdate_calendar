@@ -245,3 +245,7 @@ cython_debug/
 passenger_wsgi.py
 ./static
 tmp
+
+# JS
+node_modules
+package-lock.json

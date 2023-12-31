@@ -1,0 +1,45 @@
+{% extends 'base/base_site.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    <h1 class="text-center text-xl py-5">Liste des anniversaires</h1>
+    <div class="relative overflow-x-auto px-5">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Prénom
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Nom
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date d'anniversaire
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Groupe
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for person in persons %}
+                    <tr class="bg-white border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            {{ person.first_name }}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{ person.last_name }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ person.birthdate }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ person.get_teams }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

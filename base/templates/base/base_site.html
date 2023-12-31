@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Loan Courchinoux-Billonnet">
+    <meta name="keywords" content="anniversaires, calendrier d'anniversaires">
+    <meta name="description" content="Plateforme de gestion des dates d'anniversaire">
+
+    <!-- Title & favicon -->
+    <title>{% block title %}{% endblock %} | Birthdates</title>
+    <link rel="icon" href="{% static 'base/images/favicon.png' %}" type="image/x-icon">
+
+    <!-- CSS libraries -->
+    <link href="{% static 'base/css/output.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    {% block custom_css %}{% endblock %}
+</head>
+<body>
+
+<!-- Notification -->
+{% for message in messages %}
+    {% include 'base/components/message.html' with tags=message.tags message=message %}
+{% endfor %}
+<section id="messages-section"></section>
+
+{% block content %}{% endblock %}
+
+<!-- Libs JS -->
+<script src="{% static 'node_modules/flowbite/dist/flowbite.min.js' %}"></script>
+
+<!-- Custom JS -->
+{% block custom_javascript %}{% endblock %}
+
+</body>
+</html>
