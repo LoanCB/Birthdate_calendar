@@ -44,6 +44,9 @@ class Person(models.Model):
     def get_full_name(self):
         return f'{self.first_name} {self.last_name}'
 
+    def get_teams(self):
+        return ', '.join([team.name for team in self.teams.all()])
+
 
 class Team(models.Model):
     name = models.CharField('Nom', max_length=50)

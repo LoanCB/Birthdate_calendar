@@ -1,9 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, redirect
 
 from base.forms import LoginForm
+from base.models import Person
 
 
 def login_user(request):
@@ -27,4 +29,5 @@ def logout_user(request):
 
 @login_required
 def home(request):
-    return render(request, 'base/home.html')
+    persons = Person.objects.filter(Q(user=request.user) | Q(teams__users=request.user))
+    return render(request, 'base/home.html', {'persons': persons})
