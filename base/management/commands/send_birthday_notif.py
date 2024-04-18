@@ -33,7 +33,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         today = datetime.date.today().strftime('%d-%m')
-        today_year = datetime.datetime.today().year
         total_notifications, total_birthday_found, total_birthday_tomorrow_found = 0, 0, 0
 
         for person in Person.objects.all():
@@ -46,7 +45,7 @@ class Command(BaseCommand):
 
                 response = send_notification(
                     f"Aujourd'hui est l'anniversaire de {person.username or person.get_full_name()} !\n Cela lui fait "
-                    f"{today_year - person.birthdate.year} ans",
+                    f"{person.get_age()} ans",
                     f"Anniversaire {person.get_full_name()}",
                     notification_tags
                 )
