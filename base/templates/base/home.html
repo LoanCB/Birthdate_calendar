@@ -4,6 +4,22 @@
 
 {% block content %}
     <h1 class="text-center text-xl py-5">Liste des anniversaires</h1>
+    <form method="get" class="flex gap-5 items-end flex-wrap mb-3 mx-10">
+        <div class="w-full grow basis-52">
+            {{ filter.form.text.label }}
+            {{ filter.form.text }}
+        </div>
+        <div class="w-full grow basis-52 flex gap-3">
+            <button type="submit"
+                    class="px-2 py-3 w-full text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600">
+                Filtrer
+            </button>
+            <a href="{% url 'home' %}"
+               class="w-full flex justify-center items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600">
+                Effacer
+            </a>
+        </div>
+    </form>
     <div class="relative overflow-x-auto px-5">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">

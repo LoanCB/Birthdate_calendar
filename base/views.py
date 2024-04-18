@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render, redirect
 
+from base.filters import PersonFilter
 from base.forms import LoginForm
 from base.models import Person
 
@@ -31,8 +32,9 @@ def logout_user(request):
 @login_required
 def home(request):
     queryset = Person.objects.filter(Q(user=request.user) | Q(teams__users=request.user)).distinct()
+    f = PersonFilter(request.GET, queryset=queryset)
     page = request.GET.get('page', 1)
-    paginator = Paginator(queryset, 15)
+    paginator = Paginator(f.qs, 15)
 
     try:
         persons = paginator.page(page)
@@ -41,4 +43,4 @@ def home(request):
     except EmptyPage:
         persons = paginator.page(paginator.num_pages)
 
-    return render(request, 'base/home.html', {'persons': persons})
+    return render(request, 'base/home.html', {'persons': persons, 'filter': f})
