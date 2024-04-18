@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render, redirect
 
@@ -29,5 +30,15 @@ def logout_user(request):
 
 @login_required
 def home(request):
-    persons = Person.objects.filter(Q(user=request.user) | Q(teams__users=request.user)).distinct()
+    queryset = Person.objects.filter(Q(user=request.user) | Q(teams__users=request.user)).distinct()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(queryset, 15)
+
+    try:
+        persons = paginator.page(page)
+    except PageNotAnInteger:
+        persons = paginator.page(1)
+    except EmptyPage:
+        persons = paginator.page(paginator.num_pages)
+
     return render(request, 'base/home.html', {'persons': persons})
