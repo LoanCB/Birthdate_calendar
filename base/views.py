@@ -29,5 +29,5 @@ def logout_user(request):
 
 @login_required
 def home(request):
-    persons = Person.objects.filter(Q(user=request.user) | Q(teams__users=request.user))
+    persons = Person.objects.filter(Q(user=request.user) | Q(teams__users=request.user)).distinct()
     return render(request, 'base/home.html', {'persons': persons})
