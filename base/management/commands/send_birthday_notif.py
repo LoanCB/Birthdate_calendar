@@ -3,8 +3,14 @@ from typing import Iterable
 
 import requests
 from django.core.management import BaseCommand
+from django.conf import settings
 
 from base.models import Person
+
+
+def send_discord_notification(message: str):
+    request = requests.post(settings.DISCORD_WEBHOOK_URL, data={ "content": message })
+    request.raise_for_status()
 
 
 def send_notification(message: str, title: str, notification_tags: Iterable[str]):
@@ -33,7 +39,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         today = datetime.date.today().strftime('%d-%m')
-        today_year = datetime.datetime.today().year
         total_notifications, total_birthday_found, total_birthday_tomorrow_found = 0, 0, 0
 
         for person in Person.objects.all():
@@ -41,12 +46,14 @@ class Command(BaseCommand):
                 notification_tags = set()
                 notification_tags.add(person.user.notification_tag)
                 for team in person.teams.all():
+                    if team.name == "ESGI":
+                        send_discord_notification(f"Aujourd'hui est l'anniversaire de {person.first_name} {person.last_name} !")
                     for user in team.users.all():
                         notification_tags.add(user.notification_tag)
 
                 response = send_notification(
                     f"Aujourd'hui est l'anniversaire de {person.username or person.get_full_name()} !\n Cela lui fait "
-                    f"{today_year - person.birthdate.year} ans",
+                    f"{person.get_age()} ans",
                     f"Anniversaire {person.get_full_name()}",
                     notification_tags
                 )

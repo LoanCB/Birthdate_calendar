@@ -45,7 +45,8 @@ BIRTHDAY_CALENDAR_APPS = [
 
 THIRD_PARTY_APPS = [
     'corsheaders',
-    'fontawesomefree'
+    'fontawesomefree',
+    'django_filters'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + BIRTHDAY_CALENDAR_APPS + THIRD_PARTY_APPS
@@ -152,3 +153,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = "login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "login/"
+
+DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')

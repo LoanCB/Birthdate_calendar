@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
+from django.utils import timezone
 from django.utils.crypto import get_random_string
 
 
@@ -46,6 +47,9 @@ class Person(models.Model):
 
     def get_teams(self):
         return ', '.join([team.name for team in self.teams.all()])
+
+    def get_age(self):
+        return timezone.now().year - self.birthdate.year
 
 
 class Team(models.Model):
