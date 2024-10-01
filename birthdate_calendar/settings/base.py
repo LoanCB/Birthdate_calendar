@@ -46,7 +46,8 @@ BIRTHDAY_CALENDAR_APPS = [
 THIRD_PARTY_APPS = [
     'corsheaders',
     'fontawesomefree',
-    'django_filters'
+    'django_filters',
+    'phonenumber_field'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + BIRTHDAY_CALENDAR_APPS + THIRD_PARTY_APPS
@@ -155,3 +156,4 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "login/"
 
 DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
+PHONENUMBER_DEFAULT_REGION = 'FR'
