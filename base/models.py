@@ -4,6 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from phonenumber_field.modelfields import PhoneNumberField
+from phonenumbers import PhoneNumberFormat, format_number
 
 
 class CustomUser(AbstractUser):
@@ -56,7 +57,7 @@ class Person(models.Model):
         return ', '.join([email.email for email in self.emails.all()])
     
     def get_phone_numbers(self):
-        return ', '.join([phone_number.phone_number for phone_number in self.phone_numbers.all()])
+        return ', '.join([format_number(phone_number.phone_number, PhoneNumberFormat.NATIONAL) for phone_number in self.phone_numbers.all()])
 
 
 class Team(models.Model):
@@ -105,4 +106,4 @@ class PhoneNumber(models.Model):
         verbose_name_plural = 'Numéros de téléphone'
 
     def __str__(self) -> str:
-        return self.phone_number
+        return format_number(self.phone_number, PhoneNumberFormat.NATIONAL)
